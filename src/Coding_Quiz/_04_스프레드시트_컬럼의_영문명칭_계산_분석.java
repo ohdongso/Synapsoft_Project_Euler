@@ -6,14 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class _04_스프레드시트_컬럼의_영문명칭_계산 {
+public class _04_스프레드시트_컬럼의_영문명칭_계산_분석 {
 	/*
-	 	* 문제 Coding Quiz 4(스프레드시트 컬럼의 영문명칭 계산)
 		
-		* 풀이이유
-		* 
-		사이냅소프트는 전자문서 전문기업으로 퀴즈 중 문서 개발과 가장 관련 깊은 4번 문제를 선택했습니다.
-		나머지 9개의 문제도 해결해 보겠습니다. 감사합니다.
 	*/
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,9 +19,11 @@ public class _04_스프레드시트_컬럼의_영문명칭_계산 {
 		int restIndex = 0; // 나머지 인덱스
 		String output = ""; // 출력 값
 		
-		while(input > 0) { // 26으로 입력값을 나누었을 때 0이면 제일 앞자리 index까지 구해줬다는걸 의미
-			restIndex = (input % 26) - 1; // index는 0부터 시작하기 때문에 -1을 해줬다.
-			input /= 26;
+		while(input > 0) { // 26으로 입력값을 나누었을 때 0이면 제일 앞자리 index까지 구해줬다는걸 의미		
+			input--;
+			
+			restIndex = (input % 26);
+			input /= 26; // 입력값을 26으로 나눴을 때 0이면 제일 앞자리 index까지 구한것이고, 0이 아니면 뒷자리 index를 다시 추출해야한다.
 			output += alphabets[restIndex];
 		} // while문 끝.
 		
